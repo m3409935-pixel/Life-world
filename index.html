@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101827" />
+  <title>LIFE WORLD — Weber Family</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">LW</div><div><b>LIFE WORLD</b><small>WEBER FAMILY</small></div></div>
+      <div class="online"><span class="dot"></span><span id="connection">Локальный режим</span></div>
+    </header>
+
+    <section id="setup" class="panel setup-panel">
+      <div class="eyebrow">ВАША ОБЩАЯ ИСТОРИЯ</div>
+      <h1>Одна семья.<br><em>Два игрока.</em></h1>
+      <p class="muted">Создайте комнату и подключитесь с разных телефонов. Ваши события и сохранения будут общими.</p>
+      <div class="setup-grid">
+        <label>Твоё имя
+          <input id="playerName" maxlength="20" value="Максим" />
+        </label>
+        <label>Твой персонаж
+          <select id="playerRole"><option value="maxim">Максим Вебер · старший брат</option><option value="alexander">Александр Вебер · младший брат</option></select>
+        </label>
+      </div>
+      <div class="room-actions">
+        <button id="createRoom" class="primary">Создать новую семью</button>
+        <div class="join-row"><input id="roomInput" maxlength="6" placeholder="КОД КОМНАТЫ" /><button id="joinRoom" class="secondary">Войти</button></div>
+      </div>
+      <p class="hint">Для игры вдвоём настройте Supabase по инструкции в README. Без него сайт работает в демо-режиме на одном устройстве.</p>
+      <p id="setupError" class="error"></p>
+    </section>
+
+    <section id="game" hidden>
+      <div class="welcome-row">
+        <div><div class="eyebrow">СЕМЬЯ ВЕБЕР</div><h2 id="greeting">Добро пожаловать!</h2><p class="muted" id="roomLabel"></p></div>
+        <button id="leave" class="ghost">Выйти</button>
+      </div>
+      <div class="stats">
+        <article class="stat"><span>СЕМЕЙНЫЙ БЮДЖЕТ</span><b id="money">€ 850 000</b></article>
+        <article class="stat"><span>ИГРОВОЙ ДЕНЬ</span><b id="day">День 1</b></article>
+        <article class="stat"><span>ИГРОКИ В КОМНАТЕ</span><b id="players">1</b></article>
+      </div>
+      <div class="family-grid">
+        <article class="character card">
+          <div class="avatar blue">МВ</div><div class="tag">СТАРШИЙ БРАТ</div><h3>Максим Вебер</h3><p>Управляет семейными делами, принимает решения и помогает младшему брату.</p><div class="character-foot"><span>Возраст</span><b id="maxAge">14 лет</b></div>
+        </article>
+        <article class="character card">
+          <div class="avatar green">АВ</div><div class="tag">МЛАДШИЙ БРАТ</div><h3>Александр Вебер</h3><p>Новорождённый. В будущем мечтает стать профессиональным футболистом.</p><div class="character-foot"><span>Возраст</span><b id="alexAge">0 лет</b></div><div class="dream">⚽ Будущая цель: футбол</div>
+        </article>
+      </div>
+      <div class="main-grid">
+        <section class="card events">
+          <div class="section-head"><div><div class="eyebrow">ХРОНИКА</div><h3>События семьи</h3></div><span class="live-pill">ОБЩИЙ МИР</span></div>
+          <div id="eventList" class="event-list"></div>
+        </section>
+        <section class="card actions">
+          <div class="eyebrow">ТВОЙ ХОД</div><h3>Что будем делать?</h3>
+          <button class="action" data-action="family">🏡 Провести время с семьёй</button>
+          <button class="action" data-action="football">⚽ Записать Александра в футбольную секцию</button>
+          <button class="action" data-action="school">📚 Заняться образованием</button>
+          <button class="action" data-action="advance">📅 Перейти к следующему дню</button>
+          <p class="hint">Сначала решения происходят в игровом мире. Крупные траты появятся только после отдельного подтверждения.</p>
+        </section>
+      </div>
+      <div class="card chat">
+        <div class="section-head"><div><div class="eyebrow">СВЯЗЬ</div><h3>Сообщение брату</h3></div></div>
+        <div class="chat-row"><input id="chatInput" maxlength="180" placeholder="Напиши сообщение..." /><button id="sendChat" class="primary">Отправить</button></div>
+        <div id="chatLog" class="chat-log"></div>
+      </div>
+    </section>
+    <footer> L I F E&nbsp; W O R L D <span>·</span> WEBER FAMILY <span>·</span> Версия 1.0</footer>
+  </main>
+  <script type="module" src="/src.js"></script>
+</body>
+</html>
